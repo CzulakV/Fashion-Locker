@@ -2,241 +2,1108 @@
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Fashion Locker</title>
-    <link rel="icon" type="image/x-icon" href="kepek/ikon1.ico">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+        }
+
+        .hero {
+            min-height: 60vh;
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.55),
+                    rgba(0, 0, 0, 0.55)
+                ),
+                url("walp.jpg") center / cover no-repeat;
+
+            color: white;
+        }
+
+        .product-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            transition:
+                transform 0.25s,
+                box-shadow 0.25s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+        }
+
+        .product-link {
+            text-decoration: none;
+            color: black;
+        }
+
+        .product-link:hover {
+            color: black;
+        }
+
+        .price {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            background-color: black;
+            color: #da2b2b;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .btn-login {
+            padding: 8px 20px;
+            border: 2px solid black;
+            border-radius: 25px;
+            background-color: transparent;
+            color: black;
+            font-weight: 600;
+            transition: 0.25s;
+        }
+
+        .btn-login:hover {
+            background-color: black;
+            color: white;
+        }
+
+        .cart-button {
+            position: relative;
+            border-radius: 25px;
+            padding: 8px 18px;
+        }
+
+        #cart-count {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 23px;
+            height: 23px;
+            margin-left: 5px;
+            padding: 0 6px;
+            border-radius: 50%;
+            background-color: #da2b2b;
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            border-radius: 25px;
+            transition: 0.25s;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #da2b2b;
+            border-color: #da2b2b;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 70px;
+            height: 4px;
+            margin: 10px auto 0;
+            background-color: #da2b2b;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #111;
+            color: white;
+        }
+
+        @media (max-width: 991px) {
+            .navbar-actions {
+                margin-top: 15px;
+                padding-bottom: 10px;
+            }
+
+            .navbar-actions a {
+                width: 100%;
+                margin-bottom: 8px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg bg-light shadow">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="#">Fashion Locker</a>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-light shadow sticky-top">
+        <div class="container">
 
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
-            ☰
-        </button>
+            <a class="navbar-brand fw-bold" href="#">
+                Fashion Locker
+            </a>
 
-        <div class="collapse navbar-collapse" id="nav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="#nike">Nike</a></li>
-                <li class="nav-item"><a class="nav-link" href="#jordan">Jordan</a></li>
-                <li class="nav-item"><a class="nav-link" href="#rep">Rep</a></li>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar"
+                aria-expanded="false"
+                aria-label="Navigáció megnyitása"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            </ul>
-        </div>
-    </div>
-</nav>
+            <div
+                class="collapse navbar-collapse"
+                id="mainNavbar"
+            >
 
-<!-- HERO -->
-<header class="hero d-flex align-items-center text-center">
-    <div class="container">
-        <h1 class="display-4 fw-bold">Fashion Locker</h1>
-        <p class="lead">Sneakerek és streetwear kellékek elérhető áron</p>
-    </div>
-</header>
+                <ul class="navbar-nav ms-auto align-items-lg-center">
 
-<!-- NIKE -->
-<section class="container py-5" id="nike">
-    <h2 class="text-center mb-4">Nike AirForce</h2>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nike">
+                            Nike
+                        </a>
+                    </li>
 
-    <div class="row g-4">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#jordan">
+                            Jordan
+                        </a>
+                    </li>
 
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card h-100">
-                <a href="Air_Force_1_White.html">
-                <img src="kepek/airWhite.PNG" class="card-img-top">
-                <div class="card-body">
-                    <h5>Air Force 1 White</h5>
-                    <p class="price">42999 Ft</p>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#rep">
+                            Rep
+                        </a>
+                    </li>
+
+                </ul>
+
+                <div
+                    class="navbar-actions d-lg-flex align-items-lg-center gap-2 ms-lg-3"
+                >
+
+                    <a
+                        href="login.html"
+                        class="btn btn-login"
+                    >
+                        Bejelentkezés
+                    </a>
+
+                    <a
+                        href="checkout.html"
+                        class="btn btn-dark cart-button"
+                    >
+                        🛒 Kosár
+                        <span id="cart-count">0</span>
+                    </a>
+
                 </div>
-                </a>
+
             </div>
         </div>
-
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card h-100">
-                <a href="af1B.html">
-                <img src="kepek/air1Black.PNG" class="card-img-top">
-                <div class="card-body">
-                    <h5>Air Force 1 Black</h5>
-                    <p class="price">44999 Ft</p>
-                </div>
-                </a>
-            </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card h-100">
-                <a href="Air_Force_1_Retro.html">
-                <img src="kepek/airF.PNG" class="card-img-top">
-                <div class="card-body">
-                    <h5>Air Force 1 Retro</h5>
-                    <p class="price">39999 Ft</p>
-                </div>
-                </a>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<!-- JORDAN -->
-<section class="container py-5" id="jordan">
-    <h2 class="text-center mb-4">Jordan</h2>
-
-    <div class="row g-4">
-
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card h-100">
-                <a href="Jorden_1_Classic.html">
-                <img src="kepek/jordan1_1.PNG" class="card-img-top">
-                <div class="card-body">
-                    <h5>Air Jordan 1 Classic</h5>
-                    <p class="price">52999 Ft</p>
-                </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card h-100">
-                <a href="jordan_1_bear.html">
-                <img src="kepek/jordan1_2.PNG" class="card-img-top">
-                <div class="card-body">
-                    <h5>Air Jordan 1 Bear</h5>
-                    <p class="price">49999 Ft</p>
-                </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card h-100">
-                <a href="jordan_1_phantom.html">
-                <img src="kepek/jordan1_3.PNG" class="card-img-top">
-                <div class="card-body">
-                    <h5>Air Jordan 1 Phantom</h5>
-                    <p class="price">54999 Ft</p>
-                </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card h-100">
-                <a href="jordan_1_tiffany.html">
-                <img src="kepek/jordan1_4.PNG" class="card-img-top">
-                <div class="card-body">
-                    <h5>Air Jordan 1 Tiffany</h5>
-                    <p class="price">62999 Ft</p>
-                </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card h-100">
-                <a href="jordan_1_blue.html">
-                <img src="kepek/jordan1_5.PNG" class="card-img-top">
-                <div class="card-body">
-                    <h5>Air Jordan 1 Blue</h5>
-                    <p class="price">39999 Ft</p>
-                </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card h-100">
-                <a href="jordan_1_spider_verse.html">
-                <img src="kepek/Jordan1_6.PNG" class="card-img-top">
-                <div class="card-body">
-                    <h5>Air Jordan 1 Spider Verse</h5>
-                    <p class="price">74999 Ft</p>
-                </div>
-                </a>
-            </div>
-        </div>
+    </nav>
 
 
-    </div>
-</section>
+    <!-- HERO -->
+    <header class="hero d-flex align-items-center text-center">
+        <div class="container">
 
-<!-- REP -->
-<section class="container py-5" id="rep">
-    <h2 class="text-center mb-4">Rep válogatás</h2>
+            <h1 class="display-3 fw-bold">
+                Fashion Locker
+            </h1>
 
-    <div class="row g-4">
+            <p class="lead">
+                Sneakerek és streetwear termékek elérhető áron
+            </p>
 
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card h-100">
-                <a href="louis_vuitton_belt_1.html">
-                <img src="kepek/louis_belt.jpg" class="card-img-top">
-                <div class="card-body">
-                    <h5>Louis Vuitton öv</h5>
-                    <p class="price">19999 Ft</p>
-                </div>
-                </a>
-            </div>
+            <a
+                href="#nike"
+                class="btn btn-light btn-lg rounded-pill px-4 mt-3"
+            >
+                Termékek megtekintése
+            </a>
+
         </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card h-100">
-                <a href="ck_belt.html">
-                <img src="kepek/ck_belt.jpg" class="card-img-top">
-                <div class="card-body">
-                    <h5>Celvin Clien öv</h5>
-                    <p class="price">9999 Ft</p>
+    </header>
+
+
+    <!-- NIKE -->
+    <section class="container py-5" id="nike">
+
+        <h2 class="text-center section-title">
+            Nike Air Force
+        </h2>
+
+        <div class="row g-4">
+
+            <!-- AIR FORCE 1 WHITE -->
+            <div class="col-12 col-sm-6 col-lg-4">
+
+                <div class="card product-card h-100">
+
+                    <a
+                        href="Air_Force_1_White.html"
+                        class="product-link"
+                    >
+
+                        <img
+                            src="kepek/airWhite.PNG"
+                            class="card-img-top"
+                            alt="Air Force 1 White"
+                        >
+
+                    </a>
+
+                    <div class="card-body d-flex flex-column">
+
+                        <a
+                            href="Air_Force_1_White.html"
+                            class="product-link"
+                        >
+                            <h5 class="card-title">
+                                Air Force 1 White
+                            </h5>
+                        </a>
+
+                        <p class="text-secondary">
+                            Nike
+                        </p>
+
+                        <div>
+                            <span class="price">
+                                42 999 Ft
+                            </span>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn btn-dark add-to-cart-btn mt-auto"
+                            onclick="addToCart(1)"
+                        >
+                            Kosárba
+                        </button>
+
+                    </div>
                 </div>
-                </a>
             </div>
+
+
+            <!-- AIR FORCE 1 BLACK -->
+            <div class="col-12 col-sm-6 col-lg-4">
+
+                <div class="card product-card h-100">
+
+                    <a
+                        href="af1B.html"
+                        class="product-link"
+                    >
+
+                        <img
+                            src="kepek/air1Black.PNG"
+                            class="card-img-top"
+                            alt="Air Force 1 Black"
+                        >
+
+                    </a>
+
+                    <div class="card-body d-flex flex-column">
+
+                        <a
+                            href="af1B.html"
+                            class="product-link"
+                        >
+                            <h5 class="card-title">
+                                Air Force 1 Black
+                            </h5>
+                        </a>
+
+                        <p class="text-secondary">
+                            Nike
+                        </p>
+
+                        <div>
+                            <span class="price">
+                                44 999 Ft
+                            </span>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn btn-dark add-to-cart-btn mt-auto"
+                            onclick="addToCart(2)"
+                        >
+                            Kosárba
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- AIR FORCE 1 RETRO -->
+            <div class="col-12 col-sm-6 col-lg-4">
+
+                <div class="card product-card h-100">
+
+                    <a
+                        href="Air_Force_1_Retro.html"
+                        class="product-link"
+                    >
+
+                        <img
+                            src="kepek/airF.PNG"
+                            class="card-img-top"
+                            alt="Air Force 1 Retro"
+                        >
+
+                    </a>
+
+                    <div class="card-body d-flex flex-column">
+
+                        <a
+                            href="Air_Force_1_Retro.html"
+                            class="product-link"
+                        >
+                            <h5 class="card-title">
+                                Air Force 1 Retro
+                            </h5>
+                        </a>
+
+                        <p class="text-secondary">
+                            Nike
+                        </p>
+
+                        <div>
+                            <span class="price">
+                                39 999 Ft
+                            </span>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn btn-dark add-to-cart-btn mt-auto"
+                            onclick="addToCart(3)"
+                        >
+                            Kosárba
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card h-100">
-                <a href="rolex_1.html">
-                <img src="kepek/rolex1.PNG" class="card-img-top">
-                <div class="card-body">
-                    <h5>Rolex Oyster</h5>
-                    <p class="price">14999 Ft</p>
+    </section>
+
+
+    <!-- JORDAN -->
+    <section class="container py-5" id="jordan">
+
+        <h2 class="text-center section-title">
+            Jordan
+        </h2>
+
+        <div class="row g-4">
+
+            <!-- JORDAN CLASSIC -->
+            <div class="col-12 col-sm-6 col-lg-4">
+
+                <div class="card product-card h-100">
+
+                    <a
+                        href="Jorden_1_Classic.html"
+                        class="product-link"
+                    >
+
+                        <img
+                            src="kepek/jordan1_1.PNG"
+                            class="card-img-top"
+                            alt="Air Jordan 1 Classic"
+                        >
+
+                    </a>
+
+                    <div class="card-body d-flex flex-column">
+
+                        <a
+                            href="Jorden_1_Classic.html"
+                            class="product-link"
+                        >
+                            <h5 class="card-title">
+                                Air Jordan 1 Classic
+                            </h5>
+                        </a>
+
+                        <p class="text-secondary">
+                            Jordan
+                        </p>
+
+                        <div>
+                            <span class="price">
+                                52 999 Ft
+                            </span>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn btn-dark add-to-cart-btn mt-auto"
+                            onclick="addToCart(4)"
+                        >
+                            Kosárba
+                        </button>
+
+                    </div>
                 </div>
-                </a>
             </div>
+
+
+            <!-- JORDAN BEAR -->
+            <div class="col-12 col-sm-6 col-lg-4">
+
+                <div class="card product-card h-100">
+
+                    <a
+                        href="jordan_1_bear.html"
+                        class="product-link"
+                    >
+
+                        <img
+                            src="kepek/jordan1_2.PNG"
+                            class="card-img-top"
+                            alt="Air Jordan 1 Bear"
+                        >
+
+                    </a>
+
+                    <div class="card-body d-flex flex-column">
+
+                        <a
+                            href="jordan_1_bear.html"
+                            class="product-link"
+                        >
+                            <h5 class="card-title">
+                                Air Jordan 1 Bear
+                            </h5>
+                        </a>
+
+                        <p class="text-secondary">
+                            Jordan
+                        </p>
+
+                        <div>
+                            <span class="price">
+                                49 999 Ft
+                            </span>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn btn-dark add-to-cart-btn mt-auto"
+                            onclick="addToCart(5)"
+                        >
+                            Kosárba
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- JORDAN PHANTOM -->
+            <div class="col-12 col-sm-6 col-lg-4">
+
+                <div class="card product-card h-100">
+
+                    <a
+                        href="jordan_1_phantom.html"
+                        class="product-link"
+                    >
+
+                        <img
+                            src="kepek/jordan1_3.PNG"
+                            class="card-img-top"
+                            alt="Air Jordan 1 Phantom"
+                        >
+
+                    </a>
+
+                    <div class="card-body d-flex flex-column">
+
+                        <a
+                            href="jordan_1_phantom.html"
+                            class="product-link"
+                        >
+                            <h5 class="card-title">
+                                Air Jordan 1 Phantom
+                            </h5>
+                        </a>
+
+                        <p class="text-secondary">
+                            Jordan
+                        </p>
+
+                        <div>
+                            <span class="price">
+                                54 999 Ft
+                            </span>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn btn-dark add-to-cart-btn mt-auto"
+                            onclick="addToCart(6)"
+                        >
+                            Kosárba
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- JORDAN TIFFANY -->
+            <div class="col-12 col-sm-6 col-lg-4">
+
+                <div class="card product-card h-100">
+
+                    <a
+                        href="jordan_1_tiffany.html"
+                        class="product-link"
+                    >
+
+                        <img
+                            src="kepek/jordan1_4.PNG"
+                            class="card-img-top"
+                            alt="Air Jordan 1 Tiffany"
+                        >
+
+                    </a>
+
+                    <div class="card-body d-flex flex-column">
+
+                        <a
+                            href="jordan_1_tiffany.html"
+                            class="product-link"
+                        >
+                            <h5 class="card-title">
+                                Air Jordan 1 Tiffany
+                            </h5>
+                        </a>
+
+                        <p class="text-secondary">
+                            Jordan
+                        </p>
+
+                        <div>
+                            <span class="price">
+                                62 999 Ft
+                            </span>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn btn-dark add-to-cart-btn mt-auto"
+                            onclick="addToCart(7)"
+                        >
+                            Kosárba
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- JORDAN BLUE -->
+            <div class="col-12 col-sm-6 col-lg-4">
+
+                <div class="card product-card h-100">
+
+                    <a
+                        href="jordan_1_blue.html"
+                        class="product-link"
+                    >
+
+                        <img
+                            src="kepek/jordan1_5.PNG"
+                            class="card-img-top"
+                            alt="Air Jordan 1 Blue"
+                        >
+
+                    </a>
+
+                    <div class="card-body d-flex flex-column">
+
+                        <a
+                            href="jordan_1_blue.html"
+                            class="product-link"
+                        >
+                            <h5 class="card-title">
+                                Air Jordan 1 Blue
+                            </h5>
+                        </a>
+
+                        <p class="text-secondary">
+                            Jordan
+                        </p>
+
+                        <div>
+                            <span class="price">
+                                39 999 Ft
+                            </span>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn btn-dark add-to-cart-btn mt-auto"
+                            onclick="addToCart(8)"
+                        >
+                            Kosárba
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- JORDAN SPIDER VERSE -->
+            <div class="col-12 col-sm-6 col-lg-4">
+
+                <div class="card product-card h-100">
+
+                    <a
+                        href="jordan_1_spider_verse.html"
+                        class="product-link"
+                    >
+
+                        <img
+                            src="kepek/Jordan1_6.PNG"
+                            class="card-img-top"
+                            alt="Air Jordan 1 Spider Verse"
+                        >
+
+                    </a>
+
+                    <div class="card-body d-flex flex-column">
+
+                        <a
+                            href="jordan_1_spider_verse.html"
+                            class="product-link"
+                        >
+                            <h5 class="card-title">
+                                Air Jordan 1 Spider Verse
+                            </h5>
+                        </a>
+
+                        <p class="text-secondary">
+                            Jordan
+                        </p>
+
+                        <div>
+                            <span class="price">
+                                74 999 Ft
+                            </span>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn btn-dark add-to-cart-btn mt-auto"
+                            onclick="addToCart(9)"
+                        >
+                            Kosárba
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card h-100">
-                <a href="rolex_2.html">
-                <img src="kepek/rolex2.png" class="card-img-top">
-                <div class="card-body">
-                    <h5>Rolex Datajust</h5>
-                    <p class="price">14999 Ft</p>
+    </section>
+
+
+    <!-- REP -->
+    <section class="container py-5" id="rep">
+
+        <h2 class="text-center section-title">
+            Rep válogatás
+        </h2>
+
+        <div class="row g-4">
+
+            <!-- LOUIS VUITTON ÖV -->
+            <div class="col-12 col-sm-6 col-lg-4">
+
+                <div class="card product-card h-100">
+
+                    <a
+                        href="louis_vuitton_belt_1.html"
+                        class="product-link"
+                    >
+
+                        <img
+                            src="kepek/louis_belt.jpg"
+                            class="card-img-top"
+                            alt="Louis Vuitton öv"
+                        >
+
+                    </a>
+
+                    <div class="card-body d-flex flex-column">
+
+                        <a
+                            href="louis_vuitton_belt_1.html"
+                            class="product-link"
+                        >
+                            <h5 class="card-title">
+                                Louis Vuitton öv
+                            </h5>
+                        </a>
+
+                        <p class="text-secondary">
+                            Rep
+                        </p>
+
+                        <div>
+                            <span class="price">
+                                19 999 Ft
+                            </span>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn btn-dark add-to-cart-btn mt-auto"
+                            onclick="addToCart(10)"
+                        >
+                            Kosárba
+                        </button>
+
+                    </div>
                 </div>
-                </a>
             </div>
+
+
+            <!-- CALVIN KLEIN ÖV -->
+            <div class="col-12 col-sm-6 col-lg-4">
+
+                <div class="card product-card h-100">
+
+                    <a
+                        href="ck_belt.html"
+                        class="product-link"
+                    >
+
+                        <img
+                            src="kepek/ck_belt.jpg"
+                            class="card-img-top"
+                            alt="Calvin Klein öv"
+                        >
+
+                    </a>
+
+                    <div class="card-body d-flex flex-column">
+
+                        <a
+                            href="ck_belt.html"
+                            class="product-link"
+                        >
+                            <h5 class="card-title">
+                                Calvin Klein öv
+                            </h5>
+                        </a>
+
+                        <p class="text-secondary">
+                            Rep
+                        </p>
+
+                        <div>
+                            <span class="price">
+                                9 999 Ft
+                            </span>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn btn-dark add-to-cart-btn mt-auto"
+                            onclick="addToCart(11)"
+                        >
+                            Kosárba
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ROLEX OYSTER -->
+            <div class="col-12 col-sm-6 col-lg-4">
+
+                <div class="card product-card h-100">
+
+                    <a
+                        href="rolex_1.html"
+                        class="product-link"
+                    >
+
+                        <img
+                            src="kepek/rolex1.PNG"
+                            class="card-img-top"
+                            alt="Rolex Oyster"
+                        >
+
+                    </a>
+
+                    <div class="card-body d-flex flex-column">
+
+                        <a
+                            href="rolex_1.html"
+                            class="product-link"
+                        >
+                            <h5 class="card-title">
+                                Rolex Oyster
+                            </h5>
+                        </a>
+
+                        <p class="text-secondary">
+                            Rep
+                        </p>
+
+                        <div>
+                            <span class="price">
+                                14 999 Ft
+                            </span>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn btn-dark add-to-cart-btn mt-auto"
+                            onclick="addToCart(12)"
+                        >
+                            Kosárba
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ROLEX DATEJUST -->
+            <div class="col-12 col-sm-6 col-lg-4">
+
+                <div class="card product-card h-100">
+
+                    <a
+                        href="rolex_2.html"
+                        class="product-link"
+                    >
+
+                        <img
+                            src="kepek/rolex2.png"
+                            class="card-img-top"
+                            alt="Rolex Datejust"
+                        >
+
+                    </a>
+
+                    <div class="card-body d-flex flex-column">
+
+                        <a
+                            href="rolex_2.html"
+                            class="product-link"
+                        >
+                            <h5 class="card-title">
+                                Rolex Datejust
+                            </h5>
+                        </a>
+
+                        <p class="text-secondary">
+                            Rep
+                        </p>
+
+                        <div>
+                            <span class="price">
+                                14 999 Ft
+                            </span>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn btn-dark add-to-cart-btn mt-auto"
+                            onclick="addToCart(13)"
+                        >
+                            Kosárba
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- GUCCI TEE -->
+            <div class="col-12 col-sm-6 col-lg-4">
+
+                <div class="card product-card h-100">
+
+                    <a
+                        href="gucci_tee.html"
+                        class="product-link"
+                    >
+
+                        <img
+                            src="kepek/gucciTeeS.PNG"
+                            class="card-img-top"
+                            alt="Gucci Tee Shirt"
+                        >
+
+                    </a>
+
+                    <div class="card-body d-flex flex-column">
+
+                        <a
+                            href="gucci_tee.html"
+                            class="product-link"
+                        >
+                            <h5 class="card-title">
+                                Gucci Tee Shirt
+                            </h5>
+                        </a>
+
+                        <p class="text-secondary">
+                            Rep
+                        </p>
+
+                        <div>
+                            <span class="price">
+                                9 999 Ft
+                            </span>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn btn-dark add-to-cart-btn mt-auto"
+                            onclick="addToCart(14)"
+                        >
+                            Kosárba
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- DENIM TEARS NADRÁG -->
+            <div class="col-12 col-sm-6 col-lg-4">
+
+                <div class="card product-card h-100">
+
+                    <a
+                        href="denim_tears_shorts.html"
+                        class="product-link"
+                    >
+
+                        <img
+                            src="kepek/denim_tears_pants.PNG"
+                            class="card-img-top"
+                            alt="Denim Tears Nadrág"
+                        >
+
+                    </a>
+
+                    <div class="card-body d-flex flex-column">
+
+                        <a
+                            href="denim_tears_shorts.html"
+                            class="product-link"
+                        >
+                            <h5 class="card-title">
+                                Denim Tears Nadrág
+                            </h5>
+                        </a>
+
+                        <p class="text-secondary">
+                            Rep
+                        </p>
+
+                        <div>
+                            <span class="price">
+                                9 999 Ft
+                            </span>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn btn-dark add-to-cart-btn mt-auto"
+                            onclick="addToCart(15)"
+                        >
+                            Kosárba
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card h-100">
-                <a href="gucci_tee.html">
-                <img src="kepek/gucciTeeS.PNG" class="card-img-top">
-                <div class="card-body">
-                    <h5>Gucci Tee shirt</h5>
-                    <p class="price">9999 Ft</p>
-                </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card h-100">
-                <a href="denim_tears_shorts.html">
-                <img src="kepek/denim_tears_pants.PNG" class="card-img-top">
-                <div class="card-body">
-                    <h5>Denim Tears Nadrág</h5>
-                    <p class="price">9999 Ft</p>
-                </div>
-                </a>
-            </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="py-4 mt-5">
+
+        <div class="container text-center">
+
+            <h5 class="fw-bold">
+                Fashion Locker
+            </h5>
+
+            <p class="mb-0">
+                Sneakerek és streetwear termékek egy helyen.
+            </p>
+
         </div>
 
-    </div>
-</section>
+    </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- BOOTSTRAP -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+    <!-- A SORREND FONTOS -->
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+
 </body>
 </html>
