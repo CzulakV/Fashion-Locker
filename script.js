@@ -288,3 +288,23 @@ window.onload = function () {
     displayCart();
 
 };
+function searchProducts() {
+    const searchInput = document.getElementById("searchInput");
+
+    if (!searchInput) {
+        return;
+    }
+
+    const input = searchInput.value.trim().toLowerCase();
+    const productItems = document.querySelectorAll(".product-item");
+
+    productItems.forEach(function (productItem) {
+        const name = productItem.dataset.name || "";
+
+        if (name.toLowerCase().includes(input)) {
+            productItem.style.display = "";
+        } else {
+            productItem.style.display = "none";
+        }
+    });
+}
