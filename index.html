@@ -14,7 +14,7 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
         rel="stylesheet"
     >
-
+    <link rel="icon" href="ikon1.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
 
     <style>
@@ -161,6 +161,11 @@
                 margin-bottom: 8px;
             }
         }
+
+          #search {
+            max-width: 300px;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 
@@ -213,7 +218,19 @@
 
                 </ul>
 
-                <div
+
+                <div id="search" class="container mt-4">
+                
+                <input
+                    type="text"
+                    id="searchInput"
+                    class="form-control form-control-lg"
+                    placeholder="🔍 Termék keresése..."
+                    onkeyup="searchProducts()"
+                >
+
+            </div>
+                            <div
                     class="navbar-actions d-lg-flex align-items-lg-center gap-2 ms-lg-3"
                 >
 
@@ -272,8 +289,9 @@
         <div class="row g-4">
 
             <!-- AIR FORCE 1 WHITE -->
-            <div class="col-12 col-sm-6 col-lg-4">
-
+            <div class="col-12 col-sm-6 col-lg-4 product-item "
+            data-name="Air Force 1 White">
+            
                 <div class="card product-card h-100">
 
                     <a
@@ -324,7 +342,8 @@
 
 
             <!-- AIR FORCE 1 BLACK -->
-            <div class="col-12 col-sm-6 col-lg-4">
+            <div class="col-12 col-sm-6 col-lg-4 product-item"
+            data-name="Air Force 1 Black">
 
                 <div class="card product-card h-100">
 
@@ -376,7 +395,8 @@
 
 
             <!-- AIR FORCE 1 RETRO -->
-            <div class="col-12 col-sm-6 col-lg-4">
+            <div class="col-12 col-sm-6 col-lg-4 product-item"
+            data-name="Air Force 1 Retro">
 
                 <div class="card product-card h-100">
 
@@ -440,7 +460,8 @@
         <div class="row g-4">
 
             <!-- JORDAN CLASSIC -->
-            <div class="col-12 col-sm-6 col-lg-4">
+            <div class="col-12 col-sm-6 col-lg-4 product-item"
+            data-name="Air Jordan 1 Classic">
 
                 <div class="card product-card h-100">
 
@@ -492,7 +513,8 @@
 
 
             <!-- JORDAN BEAR -->
-            <div class="col-12 col-sm-6 col-lg-4">
+            <div class="col-12 col-sm-6 col-lg-4 product-item"
+            data-name="Air Jordan 1 Bear">
 
                 <div class="card product-card h-100">
 
@@ -544,7 +566,8 @@
 
 
             <!-- JORDAN PHANTOM -->
-            <div class="col-12 col-sm-6 col-lg-4">
+            <div class="col-12 col-sm-6 col-lg-4"
+            data-name="Air Jordan 1 Phantom">
 
                 <div class="card product-card h-100">
 
@@ -596,7 +619,8 @@
 
 
             <!-- JORDAN TIFFANY -->
-            <div class="col-12 col-sm-6 col-lg-4">
+            <div class="col-12 col-sm-6 col-lg-4 product-item"
+            data-name="Air Jordan 1 Tiffany">
 
                 <div class="card product-card h-100">
 
@@ -648,7 +672,8 @@
 
 
             <!-- JORDAN BLUE -->
-            <div class="col-12 col-sm-6 col-lg-4">
+            <div class="col-12 col-sm-6 col-lg-4"
+            data-name="Air Jordan 1 Blue">
 
                 <div class="card product-card h-100">
 
@@ -700,7 +725,8 @@
 
 
             <!-- JORDAN SPIDER VERSE -->
-            <div class="col-12 col-sm-6 col-lg-4">
+            <div class="col-12 col-sm-6 col-lg-4 product-item"
+            data-name="Air Jordan 1 Spider Verse">
 
                 <div class="card product-card h-100">
 
@@ -764,7 +790,8 @@
         <div class="row g-4">
 
             <!-- LOUIS VUITTON ÖV -->
-            <div class="col-12 col-sm-6 col-lg-4">
+            <div class="col-12 col-sm-6 col-lg-4 product-item"
+            data-name="Louis Vuitton öv">
 
                 <div class="card product-card h-100">
 
@@ -816,7 +843,8 @@
 
 
             <!-- CALVIN KLEIN ÖV -->
-            <div class="col-12 col-sm-6 col-lg-4">
+            <div class="col-12 col-sm-6 col-lg-4 product-item"
+            data-name="Calvin Klein öv">
 
                 <div class="card product-card h-100">
 
@@ -868,7 +896,8 @@
 
 
             <!-- ROLEX OYSTER -->
-            <div class="col-12 col-sm-6 col-lg-4">
+            <div class="col-12 col-sm-6 col-lg-4"
+            data-name="Rolex Oyster">
 
                 <div class="card product-card h-100">
 
@@ -920,7 +949,8 @@
 
 
             <!-- ROLEX DATEJUST -->
-            <div class="col-12 col-sm-6 col-lg-4">
+            <div class="col-12 col-sm-6 col-lg-4 product-item"
+            data-name="Rolex Datejust">
 
                 <div class="card product-card h-100">
 
@@ -972,7 +1002,8 @@
 
 
             <!-- GUCCI TEE -->
-            <div class="col-12 col-sm-6 col-lg-4">
+            <div class="col-12 col-sm-6 col-lg-4 product-item"
+            data-name="Gucci Tee Shirt">
 
                 <div class="card product-card h-100">
 
@@ -1024,7 +1055,8 @@
 
 
             <!-- DENIM TEARS NADRÁG -->
-            <div class="col-12 col-sm-6 col-lg-4">
+            <div class="col-12 col-sm-6 col-lg-4 product-item"
+            data-name="Denim Tears Nadrág">
 
                 <div class="card product-card h-100">
 
